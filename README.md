@@ -1,4 +1,4 @@
-# Project: Fullstack Todo App
+# Project: Fullstack Hotel Landing Page with Guest Book
 
 ## Purpose of the App
 
