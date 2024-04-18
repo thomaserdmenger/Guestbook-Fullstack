@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "firstname": "Bruce",
+    "lastname": "Wayne",
+    "email": "bruce.wayne@gmail.com",
+    "message": "Absolutely loved my stay at your hotel! From the warm welcome at check-in to the impeccable service throughout my visit, everything was top-notch. The room was cozy and spotlessly clean, and the amenities exceeded my expectations. The location couldn't have been better, with easy access to attractions and dining options. Thank you for making my stay so memorable! I'll definitely be back!"
+  },
+  {
+    "id": 2,
+    "firstname": "Clark",
+    "lastname": "Kent",
+    "message": "Staying at your hotel was an absolute delight! The staff were incredibly attentive and went above and beyond to ensure my comfort. The room was spacious and elegantly furnished, providing a perfect retreat after a long day of exploring the city. The breakfast spread was delicious, offering a variety of options to suit every taste. Thank you for a wonderful experience—I'll definitely be recommending your hotel to friends and family!"
+  }
+]
