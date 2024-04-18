@@ -63,4 +63,15 @@ app.post(
   }
 )
 
+// DeleteOne
+app.delete("/api/v1/guestbook/entries/:id", (req, res) => {
+  const entryId = req.params.id
+
+  readFileFn()
+    .then((data) => data.filter((item) => item.id.toString() !== entryId))
+    .then((updatedData) => writeFileFn(updatedData))
+    .then((updatedData) => res.json(updatedData))
+    .catch((err) => res.status(500).json({ err }))
+})
+
 app.listen(PORT, () => console.log(`Port listens on Port: ${PORT}`))

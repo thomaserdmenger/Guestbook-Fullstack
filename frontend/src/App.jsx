@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from "./pages/Home"
 import Guestbook from "./pages/Guestbook"
+import Admin from "./pages/Admin"
 
 function App() {
   const [fetchedEntries, setFetchedEntries] = useState([])
@@ -22,6 +23,10 @@ function App() {
           element={
             <Guestbook fetchedEntries={fetchedEntries} setFetchedEntries={setFetchedEntries} />
           }
+        />
+        <Route
+          path="/admin"
+          element={<Admin fetchedEntries={fetchedEntries} setFetchedEntries={setFetchedEntries} />}
         />
       </Routes>
     </BrowserRouter>

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useLocation } from "react-router-dom"
 
 const Form = ({ setFetchedEntries }) => {
   const [firstname, setFirstname] = useState("")
@@ -6,6 +7,7 @@ const Form = ({ setFetchedEntries }) => {
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
   const [error, setError] = useState("")
+  const location = useLocation()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -40,7 +42,12 @@ const Form = ({ setFetchedEntries }) => {
   }
   return (
     <div className="flex flex-col">
-      <h1 className="text-center mt-8 mb-10 guestbook__heading text-5xl">Before You Go</h1>
+      {location.pathname === "/admin" ? (
+        <h1 className="text-center mt-8 mb-10 guestbook__heading text-5xl">Admin Area</h1>
+      ) : (
+        <h1 className="text-center mt-8 mb-10 guestbook__heading text-5xl">Before You Go</h1>
+      )}
+
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center gap-2 w-4/5 m-auto max-w-screen-sm">
