@@ -1,15 +1,24 @@
-import { useState } from "react"
 import { useLocation } from "react-router-dom"
 
-const Form = ({ setFetchedEntries }) => {
-  const [firstname, setFirstname] = useState("")
-  const [lastname, setLastname] = useState("")
-  const [email, setEmail] = useState("")
-  const [message, setMessage] = useState("")
-  const [error, setError] = useState("")
+const Form = ({
+  setFetchedEntries,
+  firstname,
+  setFirstname,
+  lastname,
+  setLastname,
+  email,
+  setEmail,
+  message,
+  setMessage,
+  error,
+  setError,
+  setToggleEdit,
+  toggleEdit,
+  entryId
+}) => {
   const location = useLocation()
 
-  const handleSubmit = (e) => {
+  const handleAddSubmit = (e) => {
     e.preventDefault()
 
     const newEntry = {
@@ -39,7 +48,36 @@ const Form = ({ setFetchedEntries }) => {
     setEmail("")
     setMessage("")
     setError("")
+    setToggleEdit(false)
   }
+
+  const handleUpdateSubmit = (e) => {
+    e.preventDefault()
+
+    const updatedEntry = {
+      firstname,
+      lastname,
+      email,
+      message
+    }
+
+    fetch(`http://localhost:9000/api/v1/guestbook/entries/${entryId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedEntry)
+    })
+      .then((res) => res.json())
+      .then((data) => setFetchedEntries(data))
+      .catch((err) => console.log(err))
+
+    setFirstname("")
+    setLastname("")
+    setEmail("")
+    setMessage("")
+    setError("")
+    setToggleEdit(false)
+  }
+
   return (
     <div className="flex flex-col">
       {location.pathname === "/admin" ? (
@@ -49,7 +87,7 @@ const Form = ({ setFetchedEntries }) => {
       )}
 
       <form
-        onSubmit={handleSubmit}
+        onSubmit={location.pathname === "/admin" ? handleUpdateSubmit : handleAddSubmit}
         className="flex flex-col items-center gap-2 w-4/5 m-auto max-w-screen-sm">
         <input
           className="border-[1.5px] rounded p-1 w-full"

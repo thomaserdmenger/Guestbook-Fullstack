@@ -74,4 +74,27 @@ app.delete("/api/v1/guestbook/entries/:id", (req, res) => {
     .catch((err) => res.status(500).json({ err }))
 })
 
+// UpdateOne
+app.patch("/api/v1/guestbook/entries/:id", (req, res) => {
+  const entryId = req.params.id
+  const updadetEntry = req.body
+
+  readFileFn()
+    .then((data) =>
+      data.map((item) => {
+        if (item.id.toString() === entryId) {
+          return {
+            ...item,
+            ...updadetEntry
+          }
+        } else {
+          return item
+        }
+      })
+    )
+    .then((updadetData) => writeFileFn(updadetData))
+    .then((updadetData) => res.json(updadetData))
+    .catch((err) => res.status(500).json({ err }))
+})
+
 app.listen(PORT, () => console.log(`Port listens on Port: ${PORT}`))

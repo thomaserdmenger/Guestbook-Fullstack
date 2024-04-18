@@ -1,7 +1,18 @@
 import { useLocation } from "react-router-dom"
 import { MdDeleteOutline } from "react-icons/md"
+import { FaRegEdit } from "react-icons/fa"
 
-const Entries = ({ fetchedEntries, setFetchedEntries }) => {
+const Entries = ({
+  fetchedEntries,
+  setFetchedEntries,
+  setFirstname,
+  setLastname,
+  setEmail,
+  setMessage,
+  toggleEdit,
+  setToggleEdit,
+  setEntryId
+}) => {
   const location = useLocation()
 
   const handleDelete = (entry) => {
@@ -11,6 +22,15 @@ const Entries = ({ fetchedEntries, setFetchedEntries }) => {
       .then((res) => res.json())
       .then((data) => setFetchedEntries(data))
       .catch((err) => console.log(err))
+  }
+
+  const handleEdit = (entry) => {
+    setFirstname(entry.firstname)
+    setLastname(entry.lastname)
+    setEmail(entry.email)
+    setMessage(entry.message)
+    setToggleEdit(true)
+    setEntryId(entry.id)
   }
 
   return (
@@ -23,9 +43,14 @@ const Entries = ({ fetchedEntries, setFetchedEntries }) => {
                 <span className="font-bold">{`${entry.firstname} ${entry.lastname}`}</span>{" "}
                 {entry.timestamp}
               </h2>
-              {location.pathname === "/admin" && (
-                <MdDeleteOutline onClick={() => handleDelete(entry)} className="cursor-pointer" />
-              )}
+              <div className="flex items-start gap-2">
+                {location.pathname === "/admin" && (
+                  <MdDeleteOutline onClick={() => handleDelete(entry)} className="cursor-pointer" />
+                )}
+                {location.pathname === "/admin" && (
+                  <FaRegEdit className="cursor-pointer" onClick={() => handleEdit(entry)} />
+                )}
+              </div>
             </div>
             <p>{entry.message}</p>
           </article>
