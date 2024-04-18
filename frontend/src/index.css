@@ -15,3 +15,7 @@ header {
 .active {
   font-size: 1.1rem;
 }
+
+.guestbook__heading {
+  font-family: "DancingScript";
+}
