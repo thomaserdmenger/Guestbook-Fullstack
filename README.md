@@ -16,6 +16,8 @@
 - Express.js
 - CRUD Routes
 - Validation with express-validator
+- Fully Responsive
+- Mobile First
 
 ## Links
 
