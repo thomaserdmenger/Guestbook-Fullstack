@@ -9,6 +9,8 @@ const Form = ({ setFetchedEntries }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    // if (!firstname || !lastname || !email || !message) return
+
     const newEntry = {
       firstname,
       lastname,
@@ -22,7 +24,10 @@ const Form = ({ setFetchedEntries }) => {
       body: JSON.stringify(newEntry)
     })
       .then((res) => res.json())
-      .then((data) => setFetchedEntries(data))
+      .then((data) => {
+        if (typeof data === "object") return
+        setFetchedEntries(data)
+      })
       .catch((err) => console.log(err))
 
     setFirstname("")
