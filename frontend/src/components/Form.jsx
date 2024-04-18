@@ -10,8 +10,6 @@ const Form = ({ setFetchedEntries }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // if (!firstname || !lastname || !email || !message) return
-
     const newEntry = {
       firstname,
       lastname,
@@ -43,9 +41,11 @@ const Form = ({ setFetchedEntries }) => {
   return (
     <div className="flex flex-col">
       <h1 className="text-center mt-8 mb-10 guestbook__heading text-5xl">Before You Go</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col items-center gap-2">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center gap-2 w-4/5 m-auto max-w-screen-sm">
         <input
-          className="border-[1.5px] w-6/12 rounded p-1"
+          className="border-[1.5px] rounded p-1 w-full"
           type="text"
           name="firstname"
           placeholder="First Name"
@@ -53,7 +53,7 @@ const Form = ({ setFetchedEntries }) => {
           onChange={(e) => setFirstname(e.target.value)}
         />
         <input
-          className="border-[1.5px] w-6/12 rounded p-1"
+          className="border-[1.5px] rounded p-1 w-full"
           type="text"
           name="lastname"
           placeholder="Last Name"
@@ -61,7 +61,7 @@ const Form = ({ setFetchedEntries }) => {
           onChange={(e) => setLastname(e.target.value)}
         />
         <input
-          className="border-[1.5px] w-6/12 rounded p-1"
+          className="border-[1.5px] rounded p-1 w-full"
           type="email"
           name="email"
           placeholder="E-Mail"
@@ -69,7 +69,7 @@ const Form = ({ setFetchedEntries }) => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          className="border-[1.5px] w-6/12 rounded p-1 h-20 mb-2"
+          className="border-[1.5px] rounded p-1 h-20 mb-2 w-full"
           type="text"
           name="message"
           placeholder="Leave a message"
@@ -77,7 +77,7 @@ const Form = ({ setFetchedEntries }) => {
           onChange={(e) => setMessage(e.target.value)}
         />
         <button
-          className="border-[1.5px] w-6/12 p-2 rounded-full border-none bg-[#B2E6D1] text-white font-bold"
+          className="border-[1.5px] p-2 rounded-full border-none bg-[#B2E6D1] text-white font-bold w-full"
           type="submit">
           Add message
         </button>
