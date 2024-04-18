@@ -5,6 +5,7 @@ const Form = ({ setFetchedEntries }) => {
   const [lastname, setLastname] = useState("")
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
+  const [error, setError] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -25,7 +26,10 @@ const Form = ({ setFetchedEntries }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (typeof data === "object") return
+        if (data.message === "Please fill in all fields") {
+          return setError(data)
+        }
+
         setFetchedEntries(data)
       })
       .catch((err) => console.log(err))
@@ -34,6 +38,7 @@ const Form = ({ setFetchedEntries }) => {
     setLastname("")
     setEmail("")
     setMessage("")
+    setError("")
   }
   return (
     <div className="flex flex-col">
@@ -76,6 +81,7 @@ const Form = ({ setFetchedEntries }) => {
           type="submit">
           Add message
         </button>
+        {error && <p className="text-red-500 font bold text-lg">{error.message}</p>}
       </form>
     </div>
   )

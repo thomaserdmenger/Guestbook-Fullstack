@@ -35,9 +35,8 @@ app.post(
   (req, res) => {
     const result = validationResult(req)
 
-    // # Error Handling
     if (!result.isEmpty()) {
-      return res.status(400).json({ message: "Data not valid", error: result.array() })
+      return res.status(400).json({ message: "Please fill in all fields", error: result.array() })
     }
 
     newEntry = {
