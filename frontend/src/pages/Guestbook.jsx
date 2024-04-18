@@ -7,8 +7,8 @@ const Guestbook = ({ fetchedEntries, setFetchedEntries }) => {
     <>
       <Header />
       <main>
-        <Form />
-        <Entries fetchedEntries={fetchedEntries} setFetchedEntries={setFetchedEntries} />
+        <Form setFetchedEntries={setFetchedEntries} />
+        <Entries fetchedEntries={fetchedEntries} />
       </main>
     </>
   )

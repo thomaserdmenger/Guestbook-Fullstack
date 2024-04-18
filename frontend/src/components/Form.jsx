@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const Form = () => {
+const Form = ({ setFetchedEntries }) => {
   const [firstname, setFirstname] = useState("")
   const [lastname, setLastname] = useState("")
   const [email, setEmail] = useState("")
@@ -8,7 +8,22 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ firstname, lastname, email, message })
+
+    const newEntry = {
+      firstname,
+      lastname,
+      email,
+      message
+    }
+
+    fetch("http://localhost:9000/api/v1/guestbook/entries", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newEntry)
+    })
+      .then((res) => res.json())
+      .then((data) => setFetchedEntries(data))
+      .catch((err) => console.log(err))
   }
   return (
     <div className="flex flex-col">

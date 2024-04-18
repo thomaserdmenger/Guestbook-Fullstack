@@ -30,7 +30,9 @@ app.post("/api/v1/guestbook/entries", (req, res) => {
     id: v4(),
     firstname: req.body.firstname,
     lastname: req.body.lastname,
-    message: req.body.message
+    message: req.body.message,
+    email: req.body.email,
+    timestamp: Date.now()
   }
 
   readFileFn()
