@@ -32,7 +32,14 @@ app.post("/api/v1/guestbook/entries", (req, res) => {
     lastname: req.body.lastname,
     message: req.body.message,
     email: req.body.email,
-    timestamp: Date.now()
+    timestamp: `${new Date(Date.now()).toLocaleString("de-DE", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false
+    })} Uhr`
   }
 
   readFileFn()
