@@ -1,10 +1,13 @@
 import Header from "../components/Header"
+import Teaser from "../components/Teaser"
 
 const Home = () => {
   return (
     <>
       <Header />
-      <div>Home</div>
+      <main>
+        <Teaser />
+      </main>
     </>
   )
 }

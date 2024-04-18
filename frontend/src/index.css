@@ -16,6 +16,57 @@ header {
   font-size: 1.1rem;
 }
 
-.guestbook__heading {
+.guestbook__heading,
+.home__heading {
   font-family: "DancingScript";
+}
+
+.image-1 {
+  background: url("/images/image_1.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.image-2 {
+  background: url("/images/image_2.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.image-3 {
+  background: url("/images/image_3.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.image-4 {
+  background: url("/images/image_4.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.image-5 {
+  background: url("/images/image_5.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.image-5 {
+  background: url("/images/image_5.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.image-6 {
+  background: url("/images/image_6.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.image-7 {
+  background: url("/images/image_7.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.image-8 {
+  background: url("/images/image_8.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.image-9 {
+  background: url("/images/image_9.jpg") no-repeat center;
+  background-size: cover;
 }
