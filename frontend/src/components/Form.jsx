@@ -24,6 +24,11 @@ const Form = ({ setFetchedEntries }) => {
       .then((res) => res.json())
       .then((data) => setFetchedEntries(data))
       .catch((err) => console.log(err))
+
+    setFirstname("")
+    setLastname("")
+    setEmail("")
+    setMessage("")
   }
   return (
     <div className="flex flex-col">
