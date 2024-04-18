@@ -1,5 +1,12 @@
+import Header from "../components/Header"
+
 const Guestbook = () => {
-  return <div>Guestbook</div>
+  return (
+    <>
+      <Header />
+      <div>Guestbook</div>
+    </>
+  )
 }
 
 export default Guestbook
