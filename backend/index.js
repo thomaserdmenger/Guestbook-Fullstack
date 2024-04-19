@@ -1,19 +1,18 @@
 const express = require("express")
 const cors = require("cors")
+const dotenv = require("dotenv")
+const morgan = require("morgan")
 const { v4 } = require("uuid")
 const { body, validationResult } = require("express-validator")
 const { readFileFn, writeFileFn } = require("./utils.js")
-const dotenv = require("dotenv")
 
 dotenv.config()
 
 const PORT = process.env.PORT
 const app = express()
 
-app.use((req, _, next) => {
-  console.log(req.method, req.url)
-  next()
-})
+// Log Request Informaton with Morgan Middleware
+app.use(morgan("dev"))
 
 // Body Parser Middleware
 app.use(express.json())
