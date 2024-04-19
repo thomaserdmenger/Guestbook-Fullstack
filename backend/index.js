@@ -3,8 +3,11 @@ const cors = require("cors")
 const { v4 } = require("uuid")
 const { body, validationResult } = require("express-validator")
 const { readFileFn, writeFileFn } = require("./utils.js")
+const dotenv = require("dotenv")
 
-const PORT = 9000
+dotenv.config()
+
+const PORT = process.env.PORT
 const app = express()
 
 app.use((req, _, next) => {
@@ -97,4 +100,4 @@ app.patch("/api/v1/guestbook/entries/:id", (req, res) => {
     .catch((err) => res.status(500).json({ err }))
 })
 
-app.listen(PORT, () => console.log(`Port listens on Port: ${PORT}`))
+app.listen(PORT, () => console.log("Server listens"))
